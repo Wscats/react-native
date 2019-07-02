@@ -1,10 +1,23 @@
 
-import { createAppContainer, createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
+import { createAppContainer, createStackNavigator, createBottomTabNavigator } from 'react-navigation'; // Version can be specified in package.json
 
 import DetailsScreen from './src/components/DetailsScreen/DetailsScreen'
 import HomeScreen from './src/components/HomeScreen/HomeScreen'
+import MineScreen from './src/components/MineScreen/MineScreen'
 
-const AppNavigator = createStackNavigator({
+
+const MineNavigator = createStackNavigator({
+  Mine: {
+    screen: MineScreen,
+  },
+  Details: {
+    screen: DetailsScreen,
+  },
+}, {
+    initialRouteName: 'Mine',
+  });
+
+const HomeNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
   },
@@ -12,7 +25,16 @@ const AppNavigator = createStackNavigator({
     screen: DetailsScreen,
   },
 }, {
-    initialRouteName: 'Details',
-});
+    initialRouteName: 'Home',
+  });
 
-export default createAppContainer(AppNavigator);
+const TabNavigator = createBottomTabNavigator({
+  Home: HomeNavigator,
+  Mine: MineNavigator,
+}, {
+    tabBarOptions: {
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    },
+  });
+export default createAppContainer(TabNavigator);
