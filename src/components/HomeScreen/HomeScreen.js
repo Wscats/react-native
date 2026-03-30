@@ -13,8 +13,8 @@ export default class HomeScreen extends Component {
   }
   async _onRefresh() {
     this.setState({ refreshing: true });
-    var self = this;
-    var request = new XMLHttpRequest();
+    let self = this;
+    let request = new XMLHttpRequest();
     request.onreadystatechange = (e) => {
       if (request.readyState !== 4) {
         return;
@@ -37,8 +37,8 @@ export default class HomeScreen extends Component {
   }
   onEndReached(){
     console.log('到底部')
-    var self = this;
-    var request = new XMLHttpRequest();
+    const self = this;
+    const request = new XMLHttpRequest();
     request.onreadystatechange = (e) => {
       if (request.readyState !== 4) {
         return;
